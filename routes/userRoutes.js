@@ -2,6 +2,7 @@ const User = require("../schemas/userSchema");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 router.post("/user/get", async (req, res) => {
   const { email, password } = req.body;
