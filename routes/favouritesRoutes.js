@@ -32,7 +32,10 @@ router.get("/get-all/:id", async (req, res) => {
 router.delete("/one", async (req, res) => {
   const { userId, name } = req.body;
   try {
-    Favourite.findOneAndDelete({ userId: userId, name: name });
+    const favourite = await Favourite.findOneAndDelete({
+      userId: userId,
+      name: name,
+    });
     res.json({ message: "Favourite deleted" });
   } catch (error) {
     console.log(error);
