@@ -20,7 +20,7 @@ router.post("/add", async (req, res) => {
 
 router.get("/get-all/:id", async (req, res) => {
   const userId = req.params.id;
-  console.log(userId);
+  console.log("userId ", userId);
   try {
     const favourite = await Favourite.find({ userId: userId });
     res.json(favourite);
