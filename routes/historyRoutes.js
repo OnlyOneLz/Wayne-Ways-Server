@@ -27,7 +27,21 @@ router.get("/get-all/:id", async (req, res) => {
     const historicItem = await History.find({ userId: userId });
     res.json(historicItem);
   } catch (error) {
-    console.log("Error with getting history: ", error);
+    console.log("Server: Error with getting history: ", error);
+  }
+});
+
+router.delete("/delete", async (req, res) => {
+  const { userId, _id } = req.body;
+  console.log("Sever deleting item...", req.body);
+  try {
+    const historyItem = await History.findOneAndDelete({
+      userId: userId,
+      _id: _id,
+    });
+    res.json({ message: "Historic address deleted" });
+  } catch (error) {
+    console.log("Server: error deleting history item ", error);
   }
 });
 
