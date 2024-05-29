@@ -4,6 +4,7 @@ const verifyToken = require("./verifyToken");
 const userRoutes = require("./routes/userRoutes");
 const googleRoutes = require("./routes/googleRoutes");
 const favouritesRoutes = require("./routes/favouritesRoutes");
+const historyRoutes = require("./routes/historyRoutes");
 require("./db");
 require("dotenv").config();
 
@@ -24,3 +25,4 @@ app.get("/protected", verifyToken, (req, res) => {
 app.use("/user", userRoutes);
 app.use("/google", googleRoutes);
 app.use("/favourites", favouritesRoutes);
+app.use("/history", historyRoutes);
