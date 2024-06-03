@@ -31,7 +31,22 @@ router.get("/get-all/:id", async (req, res) => {
   }
 });
 
-router.delete("/delete", async (req, res) => {
+router.delete("/deleteByAddress", async (req, res) => {
+  const { userId, address } = req.body;
+
+  console.log("Sever deleting item...", req.body);
+  try {
+    const historyItem = await History.findOneAndDelete({
+      userId: userId,
+      address: address,
+    });
+    res.json({ message: "Historic address deleted" });
+  } catch (error) {
+    console.log("Server: error deleting by address ", error);
+  }
+});
+
+router.delete("/deleteById", async (req, res) => {
   const { userId, _id } = req.body;
   console.log("Sever deleting item...", req.body);
   try {
@@ -41,7 +56,7 @@ router.delete("/delete", async (req, res) => {
     });
     res.json({ message: "Historic address deleted" });
   } catch (error) {
-    console.log("Server: error deleting history item ", error);
+    console.log("Server: error deleting by ID ", error);
   }
 });
 
