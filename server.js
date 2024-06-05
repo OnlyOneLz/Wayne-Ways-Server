@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const googleRoutes = require("./routes/googleRoutes");
 const favouritesRoutes = require("./routes/favouritesRoutes");
 const historyRoutes = require("./routes/historyRoutes");
+const mapQuestRoutes = require("./routes/mapQuestRoutes");
 require("./db");
 require("dotenv").config();
 
@@ -26,3 +27,4 @@ app.use("/user", userRoutes);
 app.use("/google", googleRoutes);
 app.use("/favourites", favouritesRoutes);
 app.use("/history", historyRoutes);
+app.use("/map-quest", mapQuestRoutes);
